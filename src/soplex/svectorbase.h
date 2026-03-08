@@ -28,7 +28,7 @@
 #ifndef _SVECTORBASE_H_
 #define _SVECTORBASE_H_
 
-#include <iostream>
+#include <ostream>
 #include <assert.h>
 #include <math.h>
 #include <cmath>

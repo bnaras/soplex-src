@@ -28,7 +28,7 @@
 #ifndef _STATISTICS_H_
 #define _STATISTICS_H_
 
-#include <iostream>
+#include <ostream>
 
 #include "soplex.h"
 #include "soplex/timer.h"

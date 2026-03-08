@@ -22,7 +22,7 @@
 /*                                                                           */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#include <iostream>
+#include <ostream>
 #include <fstream>
 #include <string.h>
 #include <sstream>

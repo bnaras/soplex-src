@@ -22,7 +22,7 @@
 /*                                                                           */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#include <iostream>
+#include <ostream>
 
 #include "soplex/spxdefines.h"
 #include "soplex/vector.h"
@@ -74,7 +74,7 @@ void SPxSumST<R>::setupWeights(SPxSolverBase<R>& base)
             wrk[i] = low[i];
       }
 
-      //      std::cout << -(work * base.maxObj()) << std::endl;
+      //      r_cout() << -(work * base.maxObj()) << std::endl;
       if(count >= 12)
          break;
 

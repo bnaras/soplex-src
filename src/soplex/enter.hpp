@@ -693,7 +693,7 @@ void SPxSolverBase<R>::getEnterVals
 #if 1
          throw SPxInternalCodeException("XENTER02 This should never happen.");
 #else
-         SPX_MSG_ERROR(std::cerr << "EENTER99 ERROR: not yet debugged!" << std::endl;)
+         SPX_MSG_ERROR(r_cerr() << "EENTER99 ERROR: not yet debugged!" << std::endl;)
          enterPric = (*theCoPvec)[enterIdx];
          enterRO = this->maxRowObj(enterIdx);
          ds.rowStatus(enterIdx) = SPxBasisBase<R>::Desc::D_UNDEFINED;
@@ -862,7 +862,7 @@ void SPxSolverBase<R>::getEnterVals2
 #if 1
          throw SPxInternalCodeException("XENTER05 This should never happen.");
 #else
-         SPX_MSG_ERROR(std::cerr << "EENTER98 ERROR: not yet debugged!" << std::endl;)
+         SPX_MSG_ERROR(r_cerr() << "EENTER98 ERROR: not yet debugged!" << std::endl;)
 
          if((*theCoPvec)[leaveIdx] - theLBbound[leaveIdx] <
                theUBbound[leaveIdx] - (*theCoPvec)[leaveIdx])

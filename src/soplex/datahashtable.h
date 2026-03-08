@@ -29,7 +29,7 @@
 #define _DATAHASHTABLE_H_
 
 #include <algorithm>
-#include <iostream>
+#include <ostream>
 #include <iterator>
 #include <assert.h>
 #include <limits.h>

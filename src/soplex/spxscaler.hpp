@@ -28,7 +28,7 @@
 
 #include <cmath>
 
-#include <iostream>
+#include <ostream>
 #include <assert.h>
 #include "soplex/dsvector.h"
 #include "soplex/lprowsetbase.h"

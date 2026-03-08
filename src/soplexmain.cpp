@@ -33,7 +33,7 @@
 #include <math.h>
 #include <string.h>
 
-#include <iostream>
+#include <ostream>
 #include <iomanip>
 #include <fstream>
 
@@ -95,11 +95,11 @@ void printUsage(const char* const argv[], int idx)
       "\n";
 
    if(idx <= 0)
-      std::cerr << "missing input file\n\n";
+      r_cerr() << "missing input file\n\n";
    else
-      std::cerr << "invalid option \"" << argv[idx] << "\"\n\n";
+      r_cerr() << "invalid option \"" << argv[idx] << "\"\n\n";
 
-   std::cerr << "usage: " << argv[0] << " " << "[options] <lpfile>\n"
+   r_cerr() << "usage: " << argv[0] << " " << "[options] <lpfile>\n"
 #ifdef SOPLEX_WITH_ZLIB
              << "  <lpfile>               linear program as .mps[.gz] or .lp[.gz] file\n\n"
 #else
@@ -1185,7 +1185,7 @@ int runSoPlex(int argc, char* argv[])
             // -h : display all parameters
             if(!soplex->saveSettingsFile(nullptr, false))
             {
-               SPX_MSG_ERROR(std::cerr << "Error printing parameters\n");
+               SPX_MSG_ERROR(r_cerr() << "Error printing parameters\n");
             }
 
             break;
@@ -1213,7 +1213,7 @@ int runSoPlex(int argc, char* argv[])
       // ensure that syncmode is not manual
       if(soplex->intParam(soplex->SYNCMODE) == soplex->SYNCMODE_MANUAL)
       {
-         SPX_MSG_ERROR(std::cerr <<
+         SPX_MSG_ERROR(r_cerr() <<
                        "Error: manual synchronization is invalid on command line.  Change parameter int:syncmode.\n");
          returnValue = 1;
          goto TERMINATE_FREESTRINGS;
@@ -1228,7 +1228,7 @@ int runSoPlex(int argc, char* argv[])
 
          if(!soplex->saveSettingsFile(savesetname, false))
          {
-            SPX_MSG_ERROR(std::cerr << "Error writing parameters to file <" << savesetname << ">\n");
+            SPX_MSG_ERROR(r_cerr() << "Error writing parameters to file <" << savesetname << ">\n");
          }
       }
 
@@ -1239,7 +1239,7 @@ int runSoPlex(int argc, char* argv[])
 
          if(!soplex->saveSettingsFile(diffsetname, true))
          {
-            SPX_MSG_ERROR(std::cerr << "Error writing modified parameters to file <" << diffsetname << ">\n");
+            SPX_MSG_ERROR(r_cerr() << "Error writing modified parameters to file <" << diffsetname << ">\n");
          }
       }
 
@@ -1272,7 +1272,7 @@ int runSoPlex(int argc, char* argv[])
 
       if(!soplex->readFile(lpfilename, &rownames, &colnames))
       {
-         SPX_MSG_ERROR(std::cerr << "Error while reading file <" << lpfilename << ">.\n");
+         SPX_MSG_ERROR(r_cerr() << "Error while reading file <" << lpfilename << ">.\n");
          returnValue = 1;
          goto TERMINATE_FREESTRINGS;
       }
@@ -1282,7 +1282,7 @@ int runSoPlex(int argc, char* argv[])
       {
          if(!soplex->writeFile(writefilename, &rownames, &colnames))
          {
-            SPX_MSG_ERROR(std::cerr << "Error while writing file <" << writefilename << ">.\n\n");
+            SPX_MSG_ERROR(r_cerr() << "Error while writing file <" << writefilename << ">.\n\n");
             returnValue = 1;
             goto TERMINATE_FREESTRINGS;
          }
@@ -1298,7 +1298,7 @@ int runSoPlex(int argc, char* argv[])
       {
          if(!soplex->writeDualFileReal(writedualfilename, &rownames, &colnames))
          {
-            SPX_MSG_ERROR(std::cerr << "Error while writing dual file <" << writedualfilename << ">.\n\n");
+            SPX_MSG_ERROR(r_cerr() << "Error while writing dual file <" << writedualfilename << ">.\n\n");
             returnValue = 1;
             goto TERMINATE_FREESTRINGS;
          }
@@ -1317,7 +1317,7 @@ int runSoPlex(int argc, char* argv[])
 
          if(!soplex->readBasisFile(readbasname, &rownames, &colnames))
          {
-            SPX_MSG_ERROR(std::cerr << "Error while reading file <" << readbasname << ">.\n");
+            SPX_MSG_ERROR(r_cerr() << "Error while reading file <" << readbasname << ">.\n");
             returnValue = 1;
             goto TERMINATE_FREESTRINGS;
          }
@@ -1400,7 +1400,7 @@ int runSoPlex(int argc, char* argv[])
          }
          else if(!soplex->writeBasisFile(writebasname, &rownames, &colnames))
          {
-            SPX_MSG_ERROR(std::cerr << "Error while writing file <" << writebasname << ">.\n\n");
+            SPX_MSG_ERROR(r_cerr() << "Error while writing file <" << writebasname << ">.\n\n");
             returnValue = 1;
             goto TERMINATE_FREESTRINGS;
          }
@@ -1414,7 +1414,7 @@ int runSoPlex(int argc, char* argv[])
    }
    catch(const SPxException& x)
    {
-      SPX_MSG_ERROR(std::cerr << "Exception caught: " << x.what() << "\n");
+      SPX_MSG_ERROR(r_cerr() << "Exception caught: " << x.what() << "\n");
       returnValue = 1;
       goto TERMINATE_FREESTRINGS;
    }
@@ -1489,7 +1489,7 @@ int main(int argc, char* argv[])
             if(option[11] == '1')
             {
 #ifndef SOPLEX_WITH_FLOAT128
-               SPX_MSG_ERROR(std::cerr <<
+               SPX_MSG_ERROR(r_cerr() <<
                              "Cannot set arithmetic type to quadprecision - Soplex compiled without quadprecision support\n";)
                printUsage(argv, 0);
                return 1;
@@ -1500,7 +1500,7 @@ int main(int argc, char* argv[])
             else if(option[11] == '2')
             {
 #ifndef SOPLEX_WITH_BOOST
-               SPX_MSG_ERROR(std::cerr <<
+               SPX_MSG_ERROR(r_cerr() <<
                              "Cannot set arithmetic type to multiprecision - Soplex compiled without boost\n";)
                printUsage(argv, 0);
                return 1;
@@ -1519,7 +1519,7 @@ int main(int argc, char* argv[])
          {
             precision = atoi(option + 10);
 #ifndef SOPLEX_WITH_BOOST
-            SPX_MSG_ERROR(std::cerr << "Setting precision to non-default value without Boost has no effect\n";)
+            SPX_MSG_ERROR(r_cerr() << "Setting precision to non-default value without Boost has no effect\n";)
 #endif
          }
 
@@ -1532,7 +1532,7 @@ int main(int argc, char* argv[])
 
    if(precision != 0 && arithmetic != 2)
    {
-      SPX_MSG_ERROR(std::cerr <<
+      SPX_MSG_ERROR(r_cerr() <<
                     "Setting precision to non-default value without enabling multiprecision solve has no effect\n";)
    }
 
@@ -1547,7 +1547,7 @@ int main(int argc, char* argv[])
 
    case 1:                // quadprecision
 #if BOOST_VERSION < 107000
-      std::cerr << "Error: Boost version too old." << std:: endl <<
+      r_cerr() << "Error: Boost version too old." << std:: endl <<
                 "In order to use the quadprecision feature of SoPlex," <<
                 " Boost Version 1.70.0 or higher is required." << std::endl << \
                 "Included Boost version is " << BOOST_VERSION / 100000 << "."  // maj. version
@@ -1566,7 +1566,7 @@ int main(int argc, char* argv[])
       using namespace boost::multiprecision;
 
 #if BOOST_VERSION < 107000
-      std::cerr << "Error: Boost version too old." << std:: endl <<
+      r_cerr() << "Error: Boost version too old." << std:: endl <<
                 "In order to use the multiprecision feature of SoPlex," <<
                 " Boost Version 1.70.0 or higher is required." << std::endl << \
                 "Included Boost version is " << BOOST_VERSION / 100000 << "."  // maj. version
@@ -1607,7 +1607,7 @@ int main(int argc, char* argv[])
 
    // coverity[dead_error_begin]
    default:
-      std::cerr << "Wrong value for the arithmetic mode\n";
+      r_cerr() << "Wrong value for the arithmetic mode\n";
       return 0;
    }
 }

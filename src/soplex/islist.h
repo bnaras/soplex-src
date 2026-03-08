@@ -30,7 +30,7 @@
 
 #include <assert.h>
 #include <stddef.h>
-#include <iostream>
+#include <ostream>
 
 
 namespace soplex

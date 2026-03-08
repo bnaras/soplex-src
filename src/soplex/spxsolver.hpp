@@ -23,7 +23,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <assert.h>
-#include <iostream>
+#include <ostream>
 #include <sstream>
 
 #include "soplex/spxdefines.h"
@@ -979,7 +979,7 @@ void SPxSolverBase<R>::setType(Type tp)
 
       if(m_nonbasicValueUpToDate && NE(m_nonbasicValue, val))
       {
-         SPX_MSG_ERROR(std::cerr << "stored nonbasic value: " << m_nonbasicValue
+         SPX_MSG_ERROR(r_cerr() << "stored nonbasic value: " << m_nonbasicValue
                        << ", correct nonbasic value: " << val
                        << ", violation: " << val - m_nonbasicValue << std::endl;)
          assert(EQrel(m_nonbasicValue, val, 1e-12));
@@ -1828,7 +1828,7 @@ void SPxSolverBase<R>::setType(Type tp)
          break;
 
       default:
-         SPX_MSG_ERROR(std::cerr << "ESOLVE26 ERROR: unknown basis status (" << static_cast<int>(stat) << ")"
+         SPX_MSG_ERROR(r_cerr() << "ESOLVE26 ERROR: unknown basis status (" << static_cast<int>(stat) << ")"
                        << std::endl;)
          throw SPxInternalCodeException("XSOLVE22 This should never happen.");
       }
@@ -1866,7 +1866,7 @@ void SPxSolverBase<R>::setType(Type tp)
          break;
 
       default:
-         SPX_MSG_ERROR(std::cerr << "ESOLVE27 ERROR: unknown VarStatus (" << int(stat) << ")"
+         SPX_MSG_ERROR(r_cerr() << "ESOLVE27 ERROR: unknown VarStatus (" << int(stat) << ")"
                        << std::endl;)
          throw SPxInternalCodeException("XSOLVE23 This should never happen.");
       }
@@ -1904,7 +1904,7 @@ void SPxSolverBase<R>::setType(Type tp)
          break;
 
       default:
-         SPX_MSG_ERROR(std::cerr << "ESOLVE28 ERROR: unknown VarStatus (" << int(stat) << ")"
+         SPX_MSG_ERROR(r_cerr() << "ESOLVE28 ERROR: unknown VarStatus (" << int(stat) << ")"
                        << std::endl;)
          throw SPxInternalCodeException("XSOLVE24 This should never happen.");
       }

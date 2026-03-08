@@ -22,7 +22,7 @@
 /*                                                                           */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#include <iostream>
+#include <ostream>
 #include <assert.h>
 
 #include "soplex.h"
@@ -38,7 +38,7 @@ template <class R>
 void SoPlexBase<R>::_optimizeRational(volatile bool* interrupt)
 {
 #ifndef SOPLEX_WITH_BOOST
-   SPX_MSG_ERROR(std::cerr << "ERROR: rational solve without Boost not defined!" << std::endl;)
+   SPX_MSG_ERROR(r_cerr() << "ERROR: rational solve without Boost not defined!" << std::endl;)
    return;
 #else
    bool hasUnboundedRay = false;
@@ -650,7 +650,7 @@ void SoPlexBase<R>::_performOptIRWrapper(
 
    if(boolParam(SoPlexBase<R>::PRECISION_BOOSTING))
    {
-      SPX_MSG_ERROR(std::cerr <<
+      SPX_MSG_ERROR(r_cerr() <<
                     "ERROR: parameter precision_boosting is set to true but SoPlex was compiled without MPFR support "
                     << std::endl;)
       error = true;
@@ -660,7 +660,7 @@ void SoPlexBase<R>::_performOptIRWrapper(
    // solve problem with iterative refinement and recovery mechanism
    if(!boolParam(SoPlexBase<R>::ITERATIVE_REFINEMENT))
    {
-      SPX_MSG_ERROR(std::cerr <<
+      SPX_MSG_ERROR(r_cerr() <<
                     "ERROR: parameter iterative_refinement is set to false but SoPlex was compiled without MPFR support, so boosting is not possible"
                     << std::endl;)
       error = true;
@@ -2507,7 +2507,7 @@ bool SoPlexBase<R>::_boostPrecision()
    _statistics->boostingStepTime->stop();
    return !_boostingLimitReached;
 #else
-   SPX_MSG_ERROR(std::cerr <<
+   SPX_MSG_ERROR(r_cerr() <<
                  "SoPlex was not compiled with MPFR, which is needed for precision changes \n");
    return false;
 #endif
@@ -3000,7 +3000,7 @@ void SoPlexBase<R>::_solveRealForRationalBoostedStable(
    }
 
 #else
-   SPX_MSG_ERROR(std::cerr <<
+   SPX_MSG_ERROR(r_cerr() <<
                  "SoPlex was not compiled with MPFR, which is needed for precision changes \n");
 #endif
 }
@@ -3371,7 +3371,7 @@ void SoPlexBase<R>::_performOptIRStableBoosted(
    }
 
 #else
-   SPX_MSG_ERROR(std::cerr <<
+   SPX_MSG_ERROR(r_cerr() <<
                  "SoPlex was not compiled with MPFR, which is needed for precision changes \n");
 #endif
 }
@@ -6093,7 +6093,7 @@ void SoPlexBase<R>::_solveRealForRationalBoosted(
    }
 
 #else
-   SPX_MSG_ERROR(std::cerr << "No support for precision boosting without GMP/MPFR.\n");
+   SPX_MSG_ERROR(r_cerr() << "No support for precision boosting without GMP/MPFR.\n");
 #endif
 }
 

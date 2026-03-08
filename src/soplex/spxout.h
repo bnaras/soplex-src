@@ -28,7 +28,7 @@
 #ifndef _SPXOUT_H_
 #define _SPXOUT_H_
 
-#include <iostream>
+#include <ostream>
 #include <iomanip>
 #include <assert.h>
 #include "soplex/fmt.hpp"

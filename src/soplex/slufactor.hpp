@@ -1504,7 +1504,7 @@ typename SLUFactor<R>::Status SLUFactor<R>::load(const SVectorBase<R>* matrix[],
    {
       int i;
       FILE* fl = fopen("dump.lp", "w");
-      std::cout << "DSLUFA03 Basis:\n";
+      r_cout() << "DSLUFA03 Basis:\n";
       int j = 0;
 
       for(i = 0; i < dim(); ++i)
@@ -1515,14 +1515,14 @@ typename SLUFactor<R>::Status SLUFactor<R>::load(const SVectorBase<R>* matrix[],
          {
             fprintf(fl, "%8d  %8d  ",
                     i + 1, matrix[i]->index(j) + 1);
-            std::cout << matrix[i]->value(j) << std::endl;
+            r_cout() << matrix[i]->value(j) << std::endl;
          }
       }
       fclose(fl);
-      std::cout << "DSLUFA04 LU-Factors:" << std::endl;
+      r_cout() << "DSLUFA04 LU-Factors:" << std::endl;
       dump();
 
-      std::cout << "DSLUFA05 threshold = " << lastThreshold
+      r_cout() << "DSLUFA05 threshold = " << lastThreshold
                 << "\tstability = " << stability() << std::endl;
    }
    )

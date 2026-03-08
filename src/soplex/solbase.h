@@ -37,7 +37,7 @@
 #include <assert.h>
 #include <string.h>
 #include <math.h>
-#include <iostream>
+#include <ostream>
 
 #include "soplex/basevectors.h"
 #include "soplex/spxsolver.h" // needed for basis information

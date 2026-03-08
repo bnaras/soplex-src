@@ -275,7 +275,7 @@ public:
          break;
 
       case LPRowBase<R>::RANGE:
-         SPX_MSG_ERROR(std::cerr << "EROWST01 RANGE not supported in LPRowSet::setType()" << std::endl);
+         SPX_MSG_ERROR(r_cerr() << "EROWST01 RANGE not supported in LPRowSet::setType()" << std::endl);
          throw SPxInternalCodeException("XROWST01 This should never happen.");
 
       default:

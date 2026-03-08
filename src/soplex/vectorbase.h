@@ -31,7 +31,7 @@
 #include <assert.h>
 #include <string.h>
 #include <math.h>
-#include <iostream>
+#include <ostream>
 #include "vector"
 #include "algorithm"
 

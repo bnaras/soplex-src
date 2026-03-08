@@ -87,12 +87,12 @@ namespace soplex
 
 inline void printRational(Rational r)
 {
-   std::cout << r << std::endl;
+   r_cout() << r << std::endl;
 }
 
 inline void printInteger(Integer r)
 {
-   std::cout << r << std::endl;
+   r_cout() << r << std::endl;
 }
 inline bool isAdjacentTo(const Rational& r, const double& d)
 {
@@ -205,7 +205,7 @@ inline Rational ratFromString(const char* desc)
             s = s.substr(0, exponentidx);
          }
 
-         // std::cout << s << std::endl;
+         // r_cout() << s << std::endl;
          if(s[0] == '.')
             s.insert(0, "0");
 
@@ -261,7 +261,7 @@ public:
 
    inline void rationalErrorMessage() const
    {
-      SPX_MSG_ERROR(std::cerr << "Using rational methods without linking boost is not supported" <<
+      SPX_MSG_ERROR(r_cerr() << "Using rational methods without linking boost is not supported" <<
                     std::endl;)
    };
 
@@ -1009,7 +1009,7 @@ namespace soplex
 inline int sizeInBase(const Rational R, const int base)
 {
 #ifndef SOPLEX_WITH_BOOST
-   SPX_MSG_ERROR(std::cerr << "ERROR: rational solve without Boost not defined!" << std::endl;)
+   SPX_MSG_ERROR(r_cerr() << "ERROR: rational solve without Boost not defined!" << std::endl;)
    return 0;
 #else
 
@@ -1063,7 +1063,7 @@ inline int dlcmSizeRational(const Rational* vector, const int length, const int 
    assert(length >= 0);
 
 #ifndef SOPLEX_WITH_BOOST
-   SPX_MSG_ERROR(std::cerr << "ERROR: rational solve without Boost not defined!" << std::endl;)
+   SPX_MSG_ERROR(r_cerr() << "ERROR: rational solve without Boost not defined!" << std::endl;)
    return 0;
 #else
 
@@ -1084,7 +1084,7 @@ inline int dmaxSizeRational(const Rational* vector, const int length, const int 
    assert(vector != nullptr);
    assert(length >= 0);
 #ifndef SOPLEX_WITH_BOOST
-   SPX_MSG_ERROR(std::cerr << "ERROR: rational solve without Boost not defined!" << std::endl;)
+   SPX_MSG_ERROR(r_cerr() << "ERROR: rational solve without Boost not defined!" << std::endl;)
    return 0;
 #else
 

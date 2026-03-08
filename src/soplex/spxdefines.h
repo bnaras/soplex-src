@@ -47,7 +47,7 @@
 #include <assert.h>
 #include <stdarg.h>
 #include <stdio.h>
-#include <iostream>
+#include <ostream>
 
 #include <cstdlib>
 #include <memory>
@@ -115,7 +115,7 @@ bool EQ(int a, int b);
 #define SOPLEX_ASSERT_WARN( prefix, expr )                        \
    if ( !( expr ) )                                        \
       {                                                    \
-         std::cerr                                         \
+         r_cerr()                                         \
          << prefix                                         \
          << " failed assertion on line " << __LINE__       \
          << " in file " << __FILE__ << ": "                \
@@ -488,7 +488,7 @@ inline int spxSnprintf(
 
       if(n < 0)
       {
-         SPX_MSG_ERROR(std::cerr << "vsnprintf returned " << n << " while reading: " << s << std::endl;)
+         SPX_MSG_ERROR(r_cerr() << "vsnprintf returned " << n << " while reading: " << s << std::endl;)
       }
 
 #endif

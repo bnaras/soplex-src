@@ -532,7 +532,7 @@ void Presol<R>::unsimplify(const VectorBase<R>& x, const VectorBase<R>& y,
 
    if(status == PostsolveStatus::kFailed && isOptimal)
    {
-      SPX_MSG_ERROR(std::cerr << "PaPILO did not pass validation" << std::endl;)
+      SPX_MSG_ERROR(r_cerr() << "PaPILO did not pass validation" << std::endl;)
       assert(false);
    }
 

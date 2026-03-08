@@ -23,7 +23,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <assert.h>
-#include <iostream>
+#include <ostream>
 
 #include "soplex/spxdefines.h"
 #include "soplex/spxsolver.h"
@@ -88,7 +88,7 @@ void SPxSolverBase<R>::computeFrhs()
                   break;
 
                default:
-                  SPX_MSG_ERROR(std::cerr << "ESVECS01 ERROR: "
+                  SPX_MSG_ERROR(r_cerr() << "ESVECS01 ERROR: "
                                 << "inconsistent basis must not happen!"
                                 << std::endl;)
                   throw SPxInternalCodeException("XSVECS01 This should never happen.");
@@ -196,7 +196,7 @@ void SPxSolverBase<R>::computeFrhsXtra()
             break;
 
          default:
-            SPX_MSG_ERROR(std::cerr << "ESVECS02 ERROR: "
+            SPX_MSG_ERROR(r_cerr() << "ESVECS02 ERROR: "
                           << "inconsistent basis must not happen!"
                           << std::endl;)
             throw SPxInternalCodeException("XSVECS02 This should never happen.");
@@ -259,7 +259,7 @@ void SPxSolverBase<R>::computeFrhs1(
             break;
 
          default:
-            SPX_MSG_ERROR(std::cerr << "ESVECS03 ERROR: "
+            SPX_MSG_ERROR(r_cerr() << "ESVECS03 ERROR: "
                           << "inconsistent basis must not happen!"
                           << std::endl;)
             throw SPxInternalCodeException("XSVECS04 This should never happen.");
@@ -336,7 +336,7 @@ void SPxSolverBase<R>::computeFrhs2(
             break;
 
          default:
-            SPX_MSG_ERROR(std::cerr << "ESVECS05 ERROR: "
+            SPX_MSG_ERROR(r_cerr() << "ESVECS05 ERROR: "
                           << "inconsistent basis must not happen!"
                           << std::endl;)
             throw SPxInternalCodeException("XSVECS05 This should never happen.");

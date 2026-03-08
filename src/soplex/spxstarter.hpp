@@ -23,7 +23,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <assert.h>
-#include <iostream>
+#include <ostream>
 
 #include "soplex/spxdefines.h"
 
@@ -33,7 +33,7 @@ template <class R>
 bool SPxStarter<R>::isConsistent() const
 {
 #ifdef ENABLE_CONSISTENCY_CHECKS
-   SPX_MSG_ERROR(std::cerr << "ESTART95 Not yet implemented" << std::endl;)
+   SPX_MSG_ERROR(r_cerr() << "ESTART95 Not yet implemented" << std::endl;)
 #endif
 
    return true;

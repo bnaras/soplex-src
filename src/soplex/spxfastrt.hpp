@@ -1077,7 +1077,7 @@ int SPxFastRT<R>::selectLeave(R& val, R, bool polish)
    SPX_DEBUG(
 
       if(leave >= 0)
-      std::cout
+      r_cout()
       << "DFSTRT01 "
       << this->thesolver->basis().iteration() << "("
       << std::setprecision(6) << this->thesolver->value() << ","
@@ -1088,7 +1088,7 @@ int SPxFastRT<R>::selectLeave(R& val, R, bool polish)
       << std::setprecision(6) << maxabs
       << std::endl;
       else
-         std::cout << "DFSTRT02 " << this->thesolver->basis().iteration()
+         r_cout() << "DFSTRT02 " << this->thesolver->basis().iteration()
          << ": skipping instable pivot" << std::endl;
       )
 
@@ -1509,11 +1509,11 @@ SPxId SPxFastRT<R>::selectEnter(R& val, int, bool polish)
       else
          x = this->thesolver->pVec().delta()[ this->thesolver->number(enterId) ];
 
-      std::cout << "DFSTRT03 " << this->thesolver->basis().iteration() << ": "
+      r_cout() << "DFSTRT03 " << this->thesolver->basis().iteration() << ": "
                 << sel << '\t' << x << " (" << maxabs << ")" << std::endl;
    }
    else
-      std::cout << "DFSTRT04 " << this->thesolver->basis().iteration()
+      r_cout() << "DFSTRT04 " << this->thesolver->basis().iteration()
                 << ": skipping instable pivot" << std::endl;
       )
 

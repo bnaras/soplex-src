@@ -29,7 +29,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <ctype.h>
-#include <iostream>
+#include <ostream>
 
 #include "soplex/spxdefines.h"
 #include "soplex/spxout.h"
@@ -453,7 +453,7 @@ static Rational LPFreadValue(char*& pos, SPxOut* spxout, const int lineno = -1)
       {
          SPX_MSG_WARNING((*spxout), (*spxout) << "WLPFRD04 Warning: In line " << lineno <<
                          ": malformed rational value in LP file\n");
-         std::cerr << e.what() << '\n';
+         r_cerr() << e.what() << '\n';
       }
    }
 
@@ -648,7 +648,7 @@ bool SPxLPBase<Rational>::readLPF(
 
             if(buf_size >= INT_MAX)
             {
-               SPX_MSG_ERROR(std::cerr << "ELPFRD16 Line longer than INT_MAX" << std::endl;)
+               SPX_MSG_ERROR(r_cerr() << "ELPFRD16 Line longer than INT_MAX" << std::endl;)
                goto syntax_error;
             }
 
@@ -656,7 +656,7 @@ bool SPxLPBase<Rational>::readLPF(
          }
          else
          {
-            SPX_MSG_ERROR(std::cerr << "ELPFRD07 No 'End' marker found" << std::endl;)
+            SPX_MSG_ERROR(r_cerr() << "ELPFRD07 No 'End' marker found" << std::endl;)
             finished = true;
             break;
          }
@@ -1128,7 +1128,7 @@ bool SPxLPBase<Rational>::readLPF(
             break;
 
          case START:
-            SPX_MSG_ERROR(std::cerr << "ELPFRD13 This seems to be no LP format file" << std::endl;)
+            SPX_MSG_ERROR(r_cerr() << "ELPFRD13 This seems to be no LP format file" << std::endl;)
             goto syntax_error;
 
          default:
@@ -1158,7 +1158,7 @@ syntax_error:
                     std::endl;)
    }
    else
-      SPX_MSG_ERROR(std::cerr << "ELPFRD15 Syntax error in line " << lineno << std::endl;)
+      SPX_MSG_ERROR(r_cerr() << "ELPFRD15 Syntax error in line " << lineno << std::endl;)
 
       if(p_cnames == nullptr)
          spx_free(cnames);
@@ -1292,7 +1292,7 @@ static void MPSreadCols(MPSInput& mps, const LPRowSetBase<Rational>& rset, const
          // check whether the new name is unique wrt previous column names
          if(cnames.size() <= ncnames)
          {
-            SPX_MSG_ERROR(std::cerr << "ERROR in COLUMNS: duplicate column name or not column-wise ordering" <<
+            SPX_MSG_ERROR(r_cerr() << "ERROR in COLUMNS: duplicate column name or not column-wise ordering" <<
                           std::endl;)
             break;
          }
@@ -1329,7 +1329,7 @@ static void MPSreadCols(MPSInput& mps, const LPRowSetBase<Rational>& rset, const
       catch(const std::exception& e)
       {
          SPX_MSG_WARNING((*spxout), (*spxout) << "WMPSRD01 Warning: malformed rational value in MPS file\n");
-         std::cerr << e.what() << '\n';
+         r_cerr() << e.what() << '\n';
       }
 
       if(strcmp(mps.field2(), mps.objName()) == 0)
@@ -1353,7 +1353,7 @@ static void MPSreadCols(MPSInput& mps, const LPRowSetBase<Rational>& rset, const
          catch(const std::exception& e)
          {
             SPX_MSG_WARNING((*spxout), (*spxout) << "WMPSRD02 Warning: malformed rational value in MPS file\n");
-            std::cerr << e.what() << '\n';
+            r_cerr() << e.what() << '\n';
          }
 
          if(strcmp(mps.field4(), mps.objName()) == 0)
@@ -1430,7 +1430,7 @@ static void MPSreadRhs(MPSInput& mps, LPRowSetBase<Rational>& rset, const NameSe
             catch(const std::exception& e)
             {
                SPX_MSG_WARNING((*spxout), (*spxout) << "WMPSRD03 Warning: malformed rational value in MPS file\n");
-               std::cerr << e.what() << '\n';
+               r_cerr() << e.what() << '\n';
             }
          }
          else if((idx = rnames.number(mps.field2())) < 0)
@@ -1444,7 +1444,7 @@ static void MPSreadRhs(MPSInput& mps, LPRowSetBase<Rational>& rset, const NameSe
             catch(const std::exception& e)
             {
                SPX_MSG_WARNING((*spxout), (*spxout) << "WMPSRD03 Warning: malformed rational value in MPS file\n");
-               std::cerr << e.what() << '\n';
+               r_cerr() << e.what() << '\n';
             }
 
             // LE or EQ
@@ -1467,7 +1467,7 @@ static void MPSreadRhs(MPSInput& mps, LPRowSetBase<Rational>& rset, const NameSe
                catch(const std::exception& e)
                {
                   SPX_MSG_WARNING((*spxout), (*spxout) << "WMPSRD03 Warning: malformed rational value in MPS file\n");
-                  std::cerr << e.what() << '\n';
+                  r_cerr() << e.what() << '\n';
                }
             }
             else if((idx = rnames.number(mps.field4())) < 0)
@@ -1481,7 +1481,7 @@ static void MPSreadRhs(MPSInput& mps, LPRowSetBase<Rational>& rset, const NameSe
                catch(const std::exception& e)
                {
                   SPX_MSG_WARNING((*spxout), (*spxout) << "WMPSRD04 Warning: malformed rational value in MPS file\n");
-                  std::cerr << e.what() << '\n';
+                  r_cerr() << e.what() << '\n';
                }
 
                // LE or EQ
@@ -1560,7 +1560,7 @@ static void MPSreadRanges(MPSInput& mps,  LPRowSetBase<Rational>& rset, const Na
             catch(const std::exception& e)
             {
                SPX_MSG_WARNING((*spxout), (*spxout) << "WMPSRD05 Warning: malformed rational value in MPS file\n");
-               std::cerr << e.what() << '\n';
+               r_cerr() << e.what() << '\n';
             }
 
             // EQ
@@ -1603,7 +1603,7 @@ static void MPSreadRanges(MPSInput& mps,  LPRowSetBase<Rational>& rset, const Na
                catch(const std::exception& e)
                {
                   SPX_MSG_WARNING((*spxout), (*spxout) << "WMPSRD06 Warning: malformed rational value in MPS file\n");
-                  std::cerr << e.what() << '\n';
+                  r_cerr() << e.what() << '\n';
                }
 
                // EQ
@@ -1711,7 +1711,7 @@ static void MPSreadBounds(MPSInput& mps, LPColSetBase<Rational>& cset, const Nam
                catch(const std::exception& e)
                {
                   SPX_MSG_WARNING((*spxout), (*spxout) << "WMPSRD07 Warning: malformed rational value in MPS file\n");
-                  std::cerr << e.what() << '\n';
+                  r_cerr() << e.what() << '\n';
                }
 
             // ILOG extension (Integer Bound)
@@ -2553,7 +2553,7 @@ void SPxLPBase<Rational>::buildDualProblem(SPxLPBase<Rational>& dualLP, SPxRowId
       int* ndualcols)
 {
    assert(false);
-   SPX_MSG_ERROR(std::cerr << "Method buildDualProblem() not implemented for Rational\n");
+   SPX_MSG_ERROR(r_cerr() << "Method buildDualProblem() not implemented for Rational\n");
 }
 
 } // namespace soplex

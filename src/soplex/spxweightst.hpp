@@ -25,7 +25,7 @@
 
 #include <assert.h>
 #include <math.h>
-#include <iostream>
+#include <ostream>
 
 #include "soplex/spxdefines.h"
 #include "soplex/svset.h"
@@ -361,9 +361,9 @@ void SPxWeightST<R>::generate(SPxSolverBase<R>& base)
          SPX_DEBUG(
 
             if(pref[i].type() == SPxId::ROW_ID)
-            std::cout << "DWEIST01 r" << base.number(pref[i]);
+            r_cout() << "DWEIST01 r" << base.number(pref[i]);
             else
-               std::cout << "DWEIST02 c" << base.number(pref[i]);
+               r_cout() << "DWEIST02 c" << base.number(pref[i]);
             )
 
                forbidden[sel] = 2;
@@ -463,11 +463,11 @@ void SPxWeightST<R>::generate(SPxSolverBase<R>& base)
 
    if(changed)
    {
-      std::cout << "changed basis\n";
+      r_cout() << "changed basis\n";
       base.loadBasis(desc);
    }
    else
-      std::cout << "nothing changed\n";
+      r_cout() << "nothing changed\n";
 
 #endif  // TEST
 }
@@ -723,12 +723,12 @@ void SPxWeightST<R>::setupWeights(SPxSolverBase<R>& base)
    SPX_DEBUG(
    {
       for(i = 0; i < base.nCols(); i++)
-         std::cout << "C i= " << i
+         r_cout() << "C i= " << i
                    << " up= " << colUp[i]
                    << " w= " << colWeight[i]
                    << std::endl;
       for(i = 0; i < base.nRows(); i++)
-         std::cout << "R i= " << i
+         r_cout() << "R i= " << i
                    << " rr= " << rowRight[i]
                    << " w= " << rowWeight[i]
                    << std::endl;

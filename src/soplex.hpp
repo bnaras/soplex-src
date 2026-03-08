@@ -862,7 +862,7 @@ template <class R>
 bool SoPlexBase<R>::getPrimalRational(mpq_t* vector, const int size)
 {
 #ifndef SOPLEX_WITH_BOOST
-   SPX_MSG_ERROR(std::cerr << "ERROR: rational solve without Boost not defined!" << std::endl;)
+   SPX_MSG_ERROR(r_cerr() << "ERROR: rational solve without Boost not defined!" << std::endl;)
    return false;
 #else
    assert(size >= numColsRational());
@@ -888,7 +888,7 @@ template <class R>
 bool SoPlexBase<R>::getSlacksRational(mpq_t* vector, const int size)
 {
 #ifndef SOPLEX_WITH_BOOST
-   SPX_MSG_ERROR(std::cerr << "ERROR: rational solve without Boost not defined!" << std::endl;)
+   SPX_MSG_ERROR(r_cerr() << "ERROR: rational solve without Boost not defined!" << std::endl;)
    return false;
 #else
    assert(size >= numRowsRational());
@@ -915,7 +915,7 @@ template <class R>
 bool SoPlexBase<R>::getPrimalRayRational(mpq_t* vector, const int size)
 {
 #ifndef SOPLEX_WITH_BOOST
-   SPX_MSG_ERROR(std::cerr << "ERROR: rational solve without Boost not defined!" << std::endl;)
+   SPX_MSG_ERROR(r_cerr() << "ERROR: rational solve without Boost not defined!" << std::endl;)
    return false;
 #else
    assert(size >= numColsRational());
@@ -942,7 +942,7 @@ template <class R>
 bool SoPlexBase<R>::getDualRational(mpq_t* vector, const int size)
 {
 #ifndef SOPLEX_WITH_BOOST
-   SPX_MSG_ERROR(std::cerr << "ERROR: rational solve without Boost not defined!" << std::endl;)
+   SPX_MSG_ERROR(r_cerr() << "ERROR: rational solve without Boost not defined!" << std::endl;)
    return false;
 #else
    assert(size >= numRowsRational());
@@ -969,7 +969,7 @@ template <class R>
 bool SoPlexBase<R>::getRedCostRational(mpq_t* vector, const int size)
 {
 #ifndef SOPLEX_WITH_BOOST
-   SPX_MSG_ERROR(std::cerr << "ERROR: rational solve without Boost not defined!" << std::endl;)
+   SPX_MSG_ERROR(r_cerr() << "ERROR: rational solve without Boost not defined!" << std::endl;)
    return false;
 #else
    assert(size >= numColsRational());
@@ -996,7 +996,7 @@ template <class R>
 bool SoPlexBase<R>::getDualFarkasRational(mpq_t* vector, const int size)
 {
 #ifndef SOPLEX_WITH_BOOST
-   SPX_MSG_ERROR(std::cerr << "ERROR: rational solve without Boost not defined!" << std::endl;)
+   SPX_MSG_ERROR(r_cerr() << "ERROR: rational solve without Boost not defined!" << std::endl;)
    return false;
 #else
    assert(size >= numRowsRational());
@@ -2993,7 +2993,7 @@ void SoPlexBase<R>::changeLhsRational(int i, const mpq_t* lhs)
       return;
 
 #ifndef SOPLEX_WITH_BOOST
-   SPX_MSG_ERROR(std::cerr << "ERROR: rational solve without Boost not defined!" << std::endl;)
+   SPX_MSG_ERROR(r_cerr() << "ERROR: rational solve without Boost not defined!" << std::endl;)
 #endif
 
    _rationalLP->changeLhs(i, lhs);
@@ -3041,7 +3041,7 @@ void SoPlexBase<R>::changeRhsRational(const mpq_t* rhs, int rhsSize)
       return;
 
 #ifndef SOPLEX_WITH_BOOST
-   SPX_MSG_ERROR(std::cerr << "ERROR: rational solve without Boost not defined!" << std::endl;)
+   SPX_MSG_ERROR(r_cerr() << "ERROR: rational solve without Boost not defined!" << std::endl;)
 #endif
 
    for(int i = 0; i < rhsSize; i++)
@@ -3132,7 +3132,7 @@ void SoPlexBase<R>::changeRangeRational(int i, const mpq_t* lhs, const mpq_t* rh
       return;
 
 #ifndef SOPLEX_WITH_BOOST
-   SPX_MSG_ERROR(std::cerr << "ERROR: rational solve without Boost not defined!" << std::endl;)
+   SPX_MSG_ERROR(r_cerr() << "ERROR: rational solve without Boost not defined!" << std::endl;)
 #endif
    _rationalLP->changeRange(i, lhs, rhs);
    _rowTypes[i] = _rangeTypeRational(_rationalLP->lhs(i), _rationalLP->rhs(i));
@@ -3220,7 +3220,7 @@ void SoPlexBase<R>::changeLowerRational(int i, const mpq_t* lower)
       return;
 
 #ifndef SOPLEX_WITH_BOOST
-   SPX_MSG_ERROR(std::cerr << "ERROR: rational solve without Boost not defined!" << std::endl;)
+   SPX_MSG_ERROR(r_cerr() << "ERROR: rational solve without Boost not defined!" << std::endl;)
 #endif
    _rationalLP->changeLower(i, lower);
    _colTypes[i] = _rangeTypeRational(_rationalLP->lower(i), _rationalLP->upper(i));
@@ -3288,7 +3288,7 @@ void SoPlexBase<R>::changeUpperRational(int i, const mpq_t* upper)
       return;
 
 #ifndef SOPLEX_WITH_BOOST
-   SPX_MSG_ERROR(std::cerr << "ERROR: rational solve without Boost not defined!" << std::endl;)
+   SPX_MSG_ERROR(r_cerr() << "ERROR: rational solve without Boost not defined!" << std::endl;)
 #endif
    _rationalLP->changeUpper(i, upper);
    _colTypes[i] = _rangeTypeRational(_rationalLP->lower(i), _rationalLP->upper(i));
@@ -3355,7 +3355,7 @@ void SoPlexBase<R>::changeBoundsRational(int i, const mpq_t* lower, const mpq_t*
       return;
 
 #ifndef SOPLEX_WITH_BOOST
-   SPX_MSG_ERROR(std::cerr << "ERROR: rational solve without Boost not defined!" << std::endl;)
+   SPX_MSG_ERROR(r_cerr() << "ERROR: rational solve without Boost not defined!" << std::endl;)
 #endif
    _rationalLP->changeBounds(i, lower, upper);
    _colTypes[i] = _rangeTypeRational(_rationalLP->lower(i), _rationalLP->upper(i));
@@ -3418,7 +3418,7 @@ void SoPlexBase<R>::changeObjRational(int i, const mpq_t* obj)
       return;
 
 #ifndef SOPLEX_WITH_BOOST
-   SPX_MSG_ERROR(std::cerr << "ERROR: rational solve without Boost not defined!" << std::endl;)
+   SPX_MSG_ERROR(r_cerr() << "ERROR: rational solve without Boost not defined!" << std::endl;)
 #endif
    _rationalLP->changeObj(i, obj);
 
@@ -3460,7 +3460,7 @@ void SoPlexBase<R>::changeElementRational(int i, int j, const mpq_t* val)
       return;
 
 #ifndef SOPLEX_WITH_BOOST
-   SPX_MSG_ERROR(std::cerr << "ERROR: rational solve without Boost not defined!" << std::endl;)
+   SPX_MSG_ERROR(r_cerr() << "ERROR: rational solve without Boost not defined!" << std::endl;)
 #endif
    _rationalLP->changeElement(i, j, val);
 
@@ -6512,7 +6512,7 @@ bool SoPlexBase<R>::setIntParam(const IntParam param, const int value, const boo
          break;
 
       case READMODE_RATIONAL:
-         SPX_MSG_ERROR(std::cerr << "ERROR: rational solve without Boost not defined!" << std::endl;)
+         SPX_MSG_ERROR(r_cerr() << "ERROR: rational solve without Boost not defined!" << std::endl;)
          return false;
 #else
 
@@ -6538,7 +6538,7 @@ bool SoPlexBase<R>::setIntParam(const IntParam param, const int value, const boo
          break;
 
       case SOLVEMODE_RATIONAL:
-         SPX_MSG_ERROR(std::cerr << "ERROR: rational solve without Boost not defined!" << std::endl;)
+         SPX_MSG_ERROR(r_cerr() << "ERROR: rational solve without Boost not defined!" << std::endl;)
          return false;
 #else
 
@@ -7194,7 +7194,7 @@ bool SoPlexBase<R>::areLPsInSync(const bool checkVecVals, const bool checkMatVal
                                  const bool quiet) const
 {
 #ifndef SOPLEX_WITH_BOOST
-   SPX_MSG_ERROR(std::cerr << "ERROR: rational solve without Boost not defined!" << std::endl;)
+   SPX_MSG_ERROR(r_cerr() << "ERROR: rational solve without Boost not defined!" << std::endl;)
    return false;
 #else
    bool result = true;

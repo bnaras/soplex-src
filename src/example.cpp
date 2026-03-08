@@ -28,7 +28,7 @@
  * @author Ambros Gleixner
  */
 
-#include <iostream>
+#include <ostream>
 #include "soplex.h"
 
 using namespace soplex;
@@ -69,14 +69,14 @@ void test_real()
    {
       mysoplex.getPrimal(prim);
       mysoplex.getDual(dual);
-      std::cout << "LP solved to optimality.\n";
-      std::cout << "Objective value is " << mysoplex.objValueReal() << ".\n";
-      std::cout << "Primal solution is [" << prim[0] << ", " << prim[1] << "].\n";
-      std::cout << "Dual solution is [" << dual[0] << "].\n";
+      r_cout() << "LP solved to optimality.\n";
+      r_cout() << "Objective value is " << mysoplex.objValueReal() << ".\n";
+      r_cout() << "Primal solution is [" << prim[0] << ", " << prim[1] << "].\n";
+      r_cout() << "Dual solution is [" << dual[0] << "].\n";
    }
    else
    {
-      std::cout << "Error: SoPlex returned with status " << stat << ".\n";
+      r_cout() << "Error: SoPlex returned with status " << stat << ".\n";
    }
 }
 
@@ -129,24 +129,24 @@ void test_rational()
    {
       mysoplex.getPrimalRational(prim);
       mysoplex.getDualRational(dual);
-      std::cout << "LP solved to optimality.\n";
-      std::cout << "Objective value is " << mysoplex.objValueRational() << ".\n";
-      std::cout << "Primal solution is [" << prim[0] << ", " << prim[1] << "].\n";
-      std::cout << "Dual solution is [" << dual[0] << "].\n";
+      r_cout() << "LP solved to optimality.\n";
+      r_cout() << "Objective value is " << mysoplex.objValueRational() << ".\n";
+      r_cout() << "Primal solution is [" << prim[0] << ", " << prim[1] << "].\n";
+      r_cout() << "Dual solution is [" << dual[0] << "].\n";
    }
    else
    {
-      std::cout << "Error: SoPlex returned with status " << stat << ".\n";
+      r_cout() << "Error: SoPlex returned with status " << stat << ".\n";
    }
 }
 
 
 int main()
 {
-   std::cout << "Testing SoPlex as floating-point LP solver:\n\n";
+   r_cout() << "Testing SoPlex as floating-point LP solver:\n\n";
    test_real();
 
-   std::cout << "\nTesting SoPlex as exact rational LP solver:\n\n";
+   r_cout() << "\nTesting SoPlex as exact rational LP solver:\n\n";
    test_rational();
 
    return 0;
