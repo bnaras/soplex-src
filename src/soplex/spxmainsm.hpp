@@ -22,14 +22,14 @@
 /*                                                                           */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#include <iostream>
+#include <ostream>
 
 #include "soplex/array.h"
 #include "soplex/dataarray.h"
 #include "soplex/sorter.h"
 #include "soplex/spxout.h"
 #include <sstream>
-#include <iostream>
+#include <ostream>
 #include <fstream>
 #include <memory>
 
@@ -1471,7 +1471,7 @@ void SPxMainSM<R>::AggregationPS::execute(VectorBase<R>& x, VectorBase<R>& y, Ve
 
    if(isOptimal && (LT(x[m_j], m_lower, this->feastol()) || GT(x[m_j], m_upper, this->feastol())))
    {
-      SPX_MSG_ERROR(std::cerr << "EMAISM: numerical violation after disaggregating variable" << std::endl;
+      SPX_MSG_ERROR(r_cerr() << "EMAISM: numerical violation after disaggregating variable" << std::endl;
                    )
    }
 
@@ -1578,7 +1578,7 @@ void SPxMainSM<R>::MultiAggregationPS::execute(VectorBase<R>& x, VectorBase<R>& 
 #ifndef NDEBUG
 
    if(isOptimal && (LT(x[m_j], m_lower, this->feastol()) || GT(x[m_j], m_upper, this->feastol())))
-      SPX_MSG_ERROR(std::cerr << "numerical violation in original space due to MultiAggregation\n";)
+      SPX_MSG_ERROR(r_cerr() << "numerical violation in original space due to MultiAggregation\n";)
 #endif
 
       // dual:

@@ -1,6 +1,6 @@
 #include "soplex.h"
 #include "soplex_interface.h"
-#include <iostream>
+#include <ostream>
 
 extern "C" {
 extern void Rprintf(const char *, ...);

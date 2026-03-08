@@ -510,7 +510,7 @@ void SPxSolverBase<R>::getLeaveVals2(
 #if 1
          throw SPxInternalCodeException("XLEAVE04 This should never happen.");
 #else
-         SPX_MSG_ERROR(std::cerr << "ELEAVE53 ERROR: not yet debugged!" << std::endl;)
+         SPX_MSG_ERROR(r_cerr() << "ELEAVE53 ERROR: not yet debugged!" << std::endl;)
          ds.rowStatus(idx) = this->dualRowStatus(idx);
          newCoPrhs = theURbound[idx];        // slack !!
          newUBbound = R(infinity);
@@ -521,7 +521,7 @@ void SPxSolverBase<R>::getLeaveVals2(
 
       case SPxBasisBase<R>::Desc::P_FIXED :
          assert(rep() == COLUMN);
-         SPX_MSG_ERROR(std::cerr << "ELEAVE54 "
+         SPX_MSG_ERROR(r_cerr() << "ELEAVE54 "
                        << "ERROR! Tried to put a fixed row variable into the basis: "
                        << "idx="   << idx
                        << ", lhs=" << this->lhs(idx)
@@ -633,7 +633,7 @@ void SPxSolverBase<R>::getLeaveVals2(
 
       case SPxBasisBase<R>::Desc::P_FIXED :
          assert(rep() == COLUMN);
-         SPX_MSG_ERROR(std::cerr << "ELEAVE56 "
+         SPX_MSG_ERROR(r_cerr() << "ELEAVE56 "
                        << "ERROR! Tried to put a fixed column variable into the basis. "
                        << "idx="     << idx
                        << ", lower=" << this->lower(idx)

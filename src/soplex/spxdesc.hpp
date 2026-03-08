@@ -22,7 +22,7 @@
 /*                                                                           */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#include <iostream>
+#include <ostream>
 
 #include "soplex/spxdefines.h"
 
@@ -130,29 +130,29 @@ void SPxBasisBase<R>::Desc::dump() const
 
    // Dump regardless of the verbosity level if this method is called.
 
-   std::cout << "DBDESC01 Column status:";
+   r_cout() << "DBDESC01 Column status:";
 
    for(i = 0; i < nCols(); ++i)
    {
       if(i % 10 == 0)
-         std::cout << std::endl << "DBDESC02 ";
+         r_cout() << std::endl << "DBDESC02 ";
 
-      std::cout << '\t' << static_cast<int>(colStatus(i));
+      r_cout() << '\t' << static_cast<int>(colStatus(i));
    }
 
-   std::cout << std::endl;
+   r_cout() << std::endl;
 
-   std::cout << "DBDESC03 Row status:";
+   r_cout() << "DBDESC03 Row status:";
 
    for(i = 0; i < nRows(); ++i)
    {
       if(i % 10 == 0)
-         std::cout << std::endl << "DBDESC04 ";
+         r_cout() << std::endl << "DBDESC04 ";
 
-      std::cout << '\t' << static_cast<int>(rowStatus(i));
+      r_cout() << '\t' << static_cast<int>(rowStatus(i));
    }
 
-   std::cout << std::endl;
+   r_cout() << std::endl;
 }
 
 template <class R>

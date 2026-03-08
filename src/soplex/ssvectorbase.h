@@ -648,7 +648,7 @@ public:
 
             if(j < 0 && spxAbs(VectorBase<R>::val[i]) > 0)
             {
-               SPX_MSG_ERROR(std::cerr << "ESSVEC01 i = " << i
+               SPX_MSG_ERROR(r_cerr() << "ESSVEC01 i = " << i
                              << "\tidx = " << j
                              << "\tval = " << std::setprecision(16) << VectorBase<R>::val[i]
                              << std::endl;)

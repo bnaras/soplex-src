@@ -23,7 +23,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <assert.h>
-#include <iostream>
+#include <ostream>
 
 #include "soplex/spxdefines.h"
 
@@ -403,7 +403,7 @@ SPxId SPxDefaultRT<R>::selectEnter(R& max, int, bool)
    SPX_DEBUG(
 
       if(!enterId.isValid())
-      std::cout << "DDEFRT02 !isValid(): max=" << max << ", x=" << x << std::endl;
+      r_cout() << "DDEFRT02 !isValid(): max=" << max << ", x=" << x << std::endl;
    )
       max = val;
 

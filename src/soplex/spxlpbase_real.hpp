@@ -29,7 +29,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <ctype.h>
-#include <iostream>
+#include <ostream>
 
 #include "soplex/spxdefines.h"
 #include "soplex/spxout.h"
@@ -1191,7 +1191,7 @@ bool SPxLPBase<R>::readLPF(
 
             if(buf_size >= INT_MAX)
             {
-               SPX_MSG_ERROR(std::cerr << "ELPFRD16 Line longer than INT_MAX" << std::endl;)
+               SPX_MSG_ERROR(r_cerr() << "ELPFRD16 Line longer than INT_MAX" << std::endl;)
                goto syntax_error;
             }
 
@@ -1199,7 +1199,7 @@ bool SPxLPBase<R>::readLPF(
          }
          else
          {
-            SPX_MSG_ERROR(std::cerr << "ELPFRD07 No 'End' marker found" << std::endl;)
+            SPX_MSG_ERROR(r_cerr() << "ELPFRD07 No 'End' marker found" << std::endl;)
             finished = true;
             break;
          }
@@ -1683,7 +1683,7 @@ bool SPxLPBase<R>::readLPF(
             break;
 
          case START:
-            SPX_MSG_ERROR(std::cerr << "ELPFRD13 This seems to be no LP format file" << std::endl;)
+            SPX_MSG_ERROR(r_cerr() << "ELPFRD13 This seems to be no LP format file" << std::endl;)
             goto syntax_error;
 
          default:
@@ -1713,7 +1713,7 @@ syntax_error:
                     std::endl;)
    }
    else
-      SPX_MSG_ERROR(std::cerr << "ELPFRD15 Syntax error in line " << lineno << std::endl;)
+      SPX_MSG_ERROR(r_cerr() << "ELPFRD15 Syntax error in line " << lineno << std::endl;)
 
       if(p_cnames == nullptr)
          spx_free(cnames);
@@ -1958,7 +1958,7 @@ static void MPSreadCols(MPSInput& mps, const LPRowSetBase<R>& rset, const NameSe
          // check whether the new name is unique wrt previous column names
          if(cnames.size() <= ncnames)
          {
-            SPX_MSG_ERROR(std::cerr << "ERROR in COLUMNS: duplicate column name or not column-wise ordering" <<
+            SPX_MSG_ERROR(r_cerr() << "ERROR in COLUMNS: duplicate column name or not column-wise ordering" <<
                           std::endl;)
             break;
          }

@@ -12,7 +12,7 @@
 
 #include <cassert>
 #include <fstream>
-#include <iostream>
+#include <ostream>
 #include <memory>
 #include <sstream>
 

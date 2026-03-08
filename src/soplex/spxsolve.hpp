@@ -23,7 +23,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <assert.h>
-#include <iostream>
+#include <ostream>
 
 #include "soplex/spxdefines.h"
 #include "soplex/rational.h"

@@ -28,7 +28,7 @@
 #ifndef _SPXID_H_
 #define _SPXID_H_
 
-#include <iostream>
+#include <ostream>
 
 #include "soplex/datakey.h"
 

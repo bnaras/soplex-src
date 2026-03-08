@@ -33,7 +33,7 @@
 #ifndef _SPXFILEIO_H_
 #define _SPXFILEIO_H_
 
-#include <iostream>
+#include <ostream>
 #include <fstream>
 
 /*-----------------------------------------------------------------------------

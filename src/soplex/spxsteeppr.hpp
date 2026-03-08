@@ -27,7 +27,7 @@
 
 #include <assert.h>
 #include <math.h>
-#include <iostream>
+#include <ostream>
 
 #include "soplex/spxdefines.h"
 #include "soplex/spxsteeppr.h"
@@ -1172,7 +1172,7 @@ bool SPxSteepPR<R>::isConsistent() const
 
          if(x > this->thesolver->leavetol() || -x > this->thesolver->leavetol())
          {
-            SPX_MSG_ERROR(std::cerr << "ESTEEP03 x[" << i << "] = " << x << std::endl;)
+            SPX_MSG_ERROR(r_cerr() << "ESTEEP03 x[" << i << "] = " << x << std::endl;)
          }
       }
    }

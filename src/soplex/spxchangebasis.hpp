@@ -22,7 +22,7 @@
 /*                                                                           */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#include <iostream>
+#include <ostream>
 
 #include "soplex/spxdefines.h"
 #include "soplex/spxbasis.h"
@@ -120,7 +120,7 @@ void SPxBasisBase<R>::addedRows(int n)
          break;
 
       default:
-         SPX_MSG_ERROR(std::cerr << "ECHBAS04 Unknown basis status!" << std::endl;)
+         SPX_MSG_ERROR(r_cerr() << "ECHBAS04 Unknown basis status!" << std::endl;)
          throw SPxInternalCodeException("XCHBAS01 This should never happen.");
       }
    }
@@ -325,7 +325,7 @@ void SPxBasisBase<R>::addedCols(int n)
          break;
 
       default:
-         SPX_MSG_ERROR(std::cerr << "ECHBAS08 Unknown basis status!" << std::endl;)
+         SPX_MSG_ERROR(r_cerr() << "ECHBAS08 Unknown basis status!" << std::endl;)
          throw SPxInternalCodeException("XCHBAS02 This should never happen.");
       }
    }

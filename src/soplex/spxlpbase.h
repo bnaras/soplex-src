@@ -35,7 +35,7 @@
 #endif
 
 #include <assert.h>
-#include <iostream>
+#include <ostream>
 #include <iomanip>
 #include <typeinfo>
 

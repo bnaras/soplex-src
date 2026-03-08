@@ -873,7 +873,7 @@ inline SLUFactorRational::Status SLUFactorRational::load(const SVectorRational* 
    SPX_DEBUG(
       int i;
       FILE* fl = fopen("dump.lp", "w");
-      std::cout << "DSLUFA03 Basis:\n";
+      r_cout() << "DSLUFA03 Basis:\n";
       int j = 0;
 
       for(i = 0; i < dim(); ++i)
@@ -885,10 +885,10 @@ inline SLUFactorRational::Status SLUFactorRational::load(const SVectorRational* 
                     i + 1, matrix[i]->index(j) + 1, matrix[i]->value(j).str());
       }
    fclose(fl);
-   std::cout << "DSLUFA04 LU-Factors:" << std::endl;
+   r_cout() << "DSLUFA04 LU-Factors:" << std::endl;
              dump();
 
-             std::cout << "DSLUFA05 threshold = " << lastThreshold
+             r_cout() << "DSLUFA05 threshold = " << lastThreshold
              << "\tstability = " << stability() << std::endl;
    )
 

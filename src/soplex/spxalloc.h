@@ -28,7 +28,7 @@
 #ifndef _SPXALLOC_H_
 #define _SPXALLOC_H_
 
-#include <iostream>
+#include <ostream>
 #include <stdlib.h>
 #include <assert.h>
 
@@ -74,7 +74,7 @@ inline void spx_alloc(T& p, size_t n = 1)
    if(p == nullptr)
    {
       // coverity[suspicious_sizeof]
-      std::cerr << "EMALLC01 malloc: Out of memory - cannot allocate "
+      r_cerr() << "EMALLC01 malloc: Out of memory - cannot allocate "
                 << sizeof(*p) * n << " bytes" << std::endl;
       throw(SPxMemoryException("XMALLC01 malloc: Could not allocate enough memory"));
    }
@@ -105,7 +105,7 @@ inline void spx_realloc(T& p, size_t n)
 
    if(pp == nullptr)
    {
-      std::cerr << "EMALLC02 realloc: Out of memory - cannot allocate "
+      r_cerr() << "EMALLC02 realloc: Out of memory - cannot allocate "
                 << sizeof(*p) * n << " bytes" << std::endl;
       throw(SPxMemoryException("XMALLC02 realloc: Could not allocate enough memory"));
    }

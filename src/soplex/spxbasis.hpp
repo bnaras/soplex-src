@@ -24,7 +24,7 @@
 
 #include <assert.h>
 #include <cstdio>
-#include <iostream>
+#include <ostream>
 #include <iomanip>
 #include <sstream>
 
@@ -763,7 +763,7 @@ void SPxBasisBase<R>::printMatrix() const
 
    for(int i = 0; i < matrix.size(); i++)
    {
-      std::cout << "C" << i << "=" << *matrix[i] << std::endl;
+      r_cout() << "C" << i << "=" << *matrix[i] << std::endl;
    }
 }
 
@@ -777,7 +777,7 @@ void SPxBasisBase<R>::printMatrixMTX(int number)
    dim = matrix.size();
    nnz = nzCount;
    spxSnprintf(filename, SPX_MAXSTRLEN, "basis/basis%d.mtx", number);
-   std::cout << "printing basis matrix to file " << filename << "\n";
+   r_cout() << "printing basis matrix to file " << filename << "\n";
    FILE* basisfile;
    basisfile = fopen(filename, "w");
    // print marker necessary for reading the file in Matlab
@@ -995,7 +995,7 @@ void SPxBasisBase<R>::factorize()
       break;
 
    default :
-      SPX_MSG_ERROR(std::cerr << "EBASIS08 error: unknown status of factorization.\n";)
+      SPX_MSG_ERROR(r_cerr() << "EBASIS08 error: unknown status of factorization.\n";)
       factorized = false;
       throw SPxInternalCodeException("XBASIS01 This should never happen.");
    }
@@ -1234,17 +1234,17 @@ void SPxBasisBase<R>::dump() const
 
    // Dump regardless of the verbosity level if this method is called.
 
-   std::cout << "DBASIS09 Basis entries:";
+   r_cout() << "DBASIS09 Basis entries:";
 
    for(i = 0; i < theBaseId.size(); ++i)
    {
       if(i % 10 == 0)
-         std::cout << std::endl << "DBASIS10 ";
+         r_cout() << std::endl << "DBASIS10 ";
 
-      std::cout << '\t' << (theBaseId[i].isSPxRowId() ? 'R' : 'C') << theLP->number(theBaseId[i]);
+      r_cout() << '\t' << (theBaseId[i].isSPxRowId() ? 'R' : 'C') << theLP->number(theBaseId[i]);
    }
 
-   std::cout << std::endl;
+   r_cout() << std::endl;
 }
 
 template <class R>

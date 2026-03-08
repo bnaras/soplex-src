@@ -2827,11 +2827,11 @@ inline void CLUFactorRational::dump() const
    for(i = 0; i < thedim; ++i)
    {
       if(row.perm[i] >= 0)
-         std::cout << "DCLUFA01 diag[" << i << "]: [" << col.orig[row.perm[i]]
+         r_cout() << "DCLUFA01 diag[" << i << "]: [" << col.orig[row.perm[i]]
                    << "] = " << diag[i] << std::endl;
 
       for(j = 0; j < u.row.len[i]; ++j)
-         std::cout << "DCLUFA02   u[" << i << "]: ["
+         r_cout() << "DCLUFA02   u[" << i << "]: ["
                    << u.row.idx[u.row.start[i] + j] << "] = "
                    << u.row.val[u.row.start[i] + j] << std::endl;
    }
@@ -2843,10 +2843,10 @@ inline void CLUFactorRational::dump() const
       for(j = 0; j < l.firstUnused; ++j)
          if(col.orig[row.perm[l.row[j]]] == i)
          {
-            std::cout << "DCLUFA03 l[" << i << "]" << std::endl;
+            r_cout() << "DCLUFA03 l[" << i << "]" << std::endl;
 
             for(k = l.start[j]; k < l.start[j + 1]; ++k)
-               std::cout << "DCLUFA04   l[" << k - l.start[j]
+               r_cout() << "DCLUFA04   l[" << k - l.start[j]
                          << "]:  [" << l.idx[k]
                          << "] = "  << l.val[k] << std::endl;
 

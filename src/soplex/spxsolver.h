@@ -29,7 +29,7 @@
 #define _SPXSOLVER_H_
 
 #include <assert.h>
-#include <iostream>
+#include <ostream>
 #include <iomanip>
 #include <sstream>
 

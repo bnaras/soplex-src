@@ -28,7 +28,7 @@
 #ifndef _MPSINPUT_H_
 #define _MPSINPUT_H_
 
-#include <iostream>
+#include <ostream>
 
 #include "soplex/spxout.h"
 
@@ -245,7 +245,7 @@ public:
    ///
    void syntaxError()
    {
-      SPX_MSG_ERROR(std::cerr << "Syntax error in line " << m_lineno << std::endl;)
+      SPX_MSG_ERROR(r_cerr() << "Syntax error in line " << m_lineno << std::endl;)
       m_section = ENDATA;
       m_has_error = true;
    }
@@ -256,14 +256,14 @@ public:
    {
       if(m_ignored < m_max_ignore)
       {
-         SPX_MSG_ERROR(std::cerr << "Warning: line " << m_lineno << ": "
+         SPX_MSG_ERROR(r_cerr() << "Warning: line " << m_lineno << ": "
                        << what << " \"" << what_name << "\""
                        << " for " << entity << " \""
                        << entity_name << "\" ignored" << std::endl;)
          ++m_ignored;
 
          if(m_ignored == m_max_ignore)
-            SPX_MSG_ERROR(std::cerr << "Warning: This was the " << m_max_ignore
+            SPX_MSG_ERROR(r_cerr() << "Warning: This was the " << m_max_ignore
                           << " ignored entry. No further warnings on "
                           << "ignored entries will be given." << std::endl;)
          }

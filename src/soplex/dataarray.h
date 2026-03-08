@@ -31,7 +31,7 @@
 #include <assert.h>
 #include <stddef.h>
 #include <string.h>
-#include <iostream>
+#include <ostream>
 #include <type_traits>
 
 #include "soplex/spxdefines.h"

@@ -34,11 +34,11 @@ namespace soplex
    if(spxAbs(value) >= 1e40 && this->hugeValues < 3)                                               \
    {                                                                                               \
       this->hugeValues++;                                                                          \
-      std::cout << prefix                                                                          \
+      r_cout() << prefix                                                                          \
                 << " Huge value during triangular solve: "                                         \
                 << value << std::endl;                                                             \
       if(this->hugeValues >= 3)                                                                    \
-         std::cout << "Skipping further warnings of this type during current solve." << std::endl; \
+         r_cout() << "Skipping further warnings of this type during current solve." << std::endl; \
    }
 #else
 #define SOPLEX_DEBUG_CHECK_HUGE_VALUE( prefix, value ) /**/
@@ -305,7 +305,7 @@ void CLUFactor<R>::setPivot(const int p_stage,
    if(spxAbs(val) < _tolerances->epsilonPivot())
    {
 #ifndef NDEBUG
-      SPX_MSG_ERROR(std::cerr
+      SPX_MSG_ERROR(r_cerr()
                     << "LU pivot element is almost zero (< "
                     << _tolerances->epsilonPivot()
                     << ") - Basis is numerically singular"
@@ -2886,11 +2886,11 @@ void CLUFactor<R>::dump() const
    for(i = 0; i < thedim; ++i)
    {
       if(row.perm[i] >= 0)
-         std::cout << "DCLUFA01 diag[" << i << "]: [" << col.orig[row.perm[i]]
+         r_cout() << "DCLUFA01 diag[" << i << "]: [" << col.orig[row.perm[i]]
                    << "] = " << diag[i] << std::endl;
 
       for(j = 0; j < u.row.len[i]; ++j)
-         std::cout << "DCLUFA02   u[" << i << "]: ["
+         r_cout() << "DCLUFA02   u[" << i << "]: ["
                    << u.row.idx[u.row.start[i] + j] << "] = "
                    << u.row.val[u.row.start[i] + j] << std::endl;
    }
@@ -2902,10 +2902,10 @@ void CLUFactor<R>::dump() const
       for(j = 0; j < l.firstUnused; ++j)
          if(col.orig[row.perm[l.row[j]]] == i)
          {
-            std::cout << "DCLUFA03 l[" << i << "]" << std::endl;
+            r_cout() << "DCLUFA03 l[" << i << "]" << std::endl;
 
             for(k = l.start[j]; k < l.start[j + 1]; ++k)
-               std::cout << "DCLUFA04   l[" << k - l.start[j]
+               r_cout() << "DCLUFA04   l[" << k - l.start[j]
                          << "]:  [" << l.idx[k]
                          << "] = "  << l.val[k] << std::endl;
 
