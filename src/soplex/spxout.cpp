@@ -22,9 +22,72 @@
 /*                                                                           */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+#include <streambuf>
+#include <ostream>
+#include <cstring>
 #include "soplex/spxout.h"
 #include "soplex/exceptions.h"
 #include "soplex/spxalloc.h"
+
+extern "C" {
+extern void Rprintf(const char *, ...);
+extern void REprintf(const char *, ...);
+}
+
+namespace
+{
+
+/// A streambuf that forwards output to Rprintf (stdout) or REprintf (stderr).
+class RStreambuf : public std::streambuf
+{
+public:
+   /// If \p useStderr is true, output goes to REprintf; otherwise Rprintf.
+   explicit RStreambuf(bool useStderr) : m_useStderr(useStderr) {}
+
+protected:
+   int overflow(int c) override
+   {
+      if(c != EOF)
+      {
+         char ch = static_cast<char>(c);
+         if(m_useStderr)
+            REprintf("%c", ch);
+         else
+            Rprintf("%c", ch);
+      }
+      return c;
+   }
+
+   std::streamsize xsputn(const char* s, std::streamsize n) override
+   {
+      // Write in chunks to avoid issues with non-null-terminated data
+      char buf[1024];
+      std::streamsize remaining = n;
+      while(remaining > 0)
+      {
+         std::streamsize chunk = (remaining < 1023) ? remaining : 1023;
+         std::memcpy(buf, s, static_cast<size_t>(chunk));
+         buf[chunk] = '\0';
+         if(m_useStderr)
+            REprintf("%s", buf);
+         else
+            Rprintf("%s", buf);
+         s += chunk;
+         remaining -= chunk;
+      }
+      return n;
+   }
+
+private:
+   bool m_useStderr;
+};
+
+static RStreambuf s_errBuf(true);
+static RStreambuf s_outBuf(false);
+static std::ostream s_errStream(&s_errBuf);
+static std::ostream s_outStream(&s_outBuf);
+
+} // anonymous namespace
 
 namespace soplex
 {
@@ -35,10 +98,10 @@ SPxOut::SPxOut()
 {
    spx_alloc(m_streams, VERB_INFO3 + 1);
    m_streams = new(m_streams) std::ostream*[VERB_INFO3 + 1];
-   m_streams[ VERB_ERROR ] = m_streams[ VERB_WARNING ] = &std::cerr;
+   m_streams[ VERB_ERROR ] = m_streams[ VERB_WARNING ] = &s_errStream;
 
    for(int i = VERB_DEBUG; i <= VERB_INFO3; ++i)
-      m_streams[ i ] = &std::cout;
+      m_streams[ i ] = &s_outStream;
 }
 
 //---------------------------------------------------

@@ -27,6 +27,11 @@
 #include "soplex/nameset.h"
 #include "soplex/spxalloc.h"
 
+extern "C" {
+extern void Rprintf(const char *, ...);
+extern void REprintf(const char *, ...);
+}
+
 namespace soplex
 {
 const char NameSet::Name::deflt = '\0';

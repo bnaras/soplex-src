@@ -25,6 +25,11 @@
 #include "soplex/didxset.h"
 #include "soplex/spxalloc.h"
 
+extern "C" {
+extern void Rprintf(const char *, ...);
+extern void REprintf(const char *, ...);
+}
+
 namespace soplex
 {
 

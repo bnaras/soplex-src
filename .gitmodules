@@ -1,0 +1,3 @@
+[submodule "src/papilo"]
+	path = src/papilo
+	url = https://github.com/scipopt/papilo.git
