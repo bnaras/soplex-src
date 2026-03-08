@@ -2,6 +2,11 @@
 #include "soplex_interface.h"
 #include <iostream>
 
+extern "C" {
+extern void Rprintf(const char *, ...);
+extern void REprintf(const char *, ...);
+}
+
 using namespace soplex;
 
 /** creates new SoPlex struct **/

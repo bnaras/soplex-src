@@ -30,6 +30,11 @@
 #include "soplex/spxout.h"
 #include "soplex/rational.h"
 
+extern "C" {
+extern void Rprintf(const char *, ...);
+extern void REprintf(const char *, ...);
+}
+
 namespace soplex
 {
 // Overloaded EQ function
@@ -46,8 +51,7 @@ bool msginconsistent(const char* name, const char* file, int line)
    assert(file != nullptr);
    assert(line >= 0);
 
-   SPX_MSG_ERROR(std::cerr << file << "(" << line << ") "
-                 << "Inconsistency detected in " << name << std::endl;)
+   SPX_MSG_ERROR(REprintf("%s(%d) Inconsistency detected in %s\n", file, line, name);)
 
    return 0;
 }
