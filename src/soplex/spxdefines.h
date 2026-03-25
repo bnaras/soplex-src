@@ -48,6 +48,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <ostream>
+#include "r_streams.h"
 
 #include <cstdlib>
 #include <memory>
